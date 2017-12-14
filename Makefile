@@ -22,11 +22,6 @@ $(BUILD_DIR)/gce-metadata-exporter: $(GO_SRC)
 
 .PHONY: docker-build
 docker-build:
-	mkdir -p $(BUILD_DIR)
-	docker rm gce-metadata-exporter-tmp || true
-	docker build -t gce-metadata-exporter-build -f Dockerfile.build .
-	docker create --name gce-metadata-exporter-tmp gce-metadata-exporter-build
-	docker cp gce-metadata-exporter-tmp:/usr/bin/gce-metadata-exporter ./build/
 	docker build -t atombender/gce-metadata-exporter:$(VERSION) .
 	docker tag atombender/gce-metadata-exporter:$(VERSION) atombender/gce-metadata-exporter:latest
 
