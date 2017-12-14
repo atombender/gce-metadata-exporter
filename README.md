@@ -4,10 +4,18 @@ This is an exporter for [Prometheus](https://prometheus.io/) that collects metad
 
 # Installation
 
+## Kubernetes
+
+You can use the [Helm](https://helm.sh) chart under `chart`:
+
+```shell
+$ helm install ./helm/gce-metadata-exporter
+```
+
 ## Docker
 
 ```
-$ docker run atombender/gce-metadata-exporter:latest
+$ docker run atombender/gce-metadata-exporter:0.2.0
 ```
 
 ## From source
@@ -23,14 +31,6 @@ $ make build
 
 ```shell
 $ gce-metadata-exporter
-```
-
-# Kubernetes
-
-You can use the Helm chart under `chart`:
-
-```shell
-$ helm install ./helm/gce-metadata-exporter
 ```
 
 # License
