@@ -38,6 +38,9 @@ func main() {
 
 	NewGCEMetadataCollector().Start()
 
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(200)
+	})
 	http.Handle("/metrics", promhttp.Handler())
 
 	log.Printf("Serving on %s", flags.ListenAddress)
