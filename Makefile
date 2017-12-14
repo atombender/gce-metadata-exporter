@@ -1,7 +1,7 @@
 .PHONY: default
 default: build
 
-VERSION := 0.1.2
+VERSION := 0.2.0
 NAME := gce-metadata-exporter
 ARCH := $(shell uname -m)
 
