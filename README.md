@@ -25,6 +25,14 @@ $ make build
 $ gce-metadata-exporter
 ```
 
+# Kubernetes
+
+You can use the Helm chart under `chart`:
+
+```shell
+$ helm install ./helm/gce-metadata-exporter
+```
+
 # License
 
 MIT license. See `LICENSE` file.

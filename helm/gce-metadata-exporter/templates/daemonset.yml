@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: gce-metadata-exporter
+  labels:
+    k8s-app: gce-metadata-exporter
+    version: v0.1.2
+spec:
+  template:
+    metadata:
+      name: gce-metadata-exporter
+      labels:
+        k8s-app: gce-metadata-exporter
+        version: v0.1.2
+    spec:
+      containers:
+      - name: gce-metadata-exporter
+        image: atombender/gce-metadata-exporter:0.1.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: scrape
+          containerPort: 9100
+          hostPort: 9101
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 9100
+            scheme: HTTP
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 0.01
+            memory: '15M'
+          limits:
+            cpu: 1.0
+            memory: '30M'
+      automountServiceAccountToken: false

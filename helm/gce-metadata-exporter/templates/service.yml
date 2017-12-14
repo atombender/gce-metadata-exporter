@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gce-metadata-exporter
+  labels:
+    k8s-app: gce-metadata-exporter
+    version: v0.1.2
+spec:
+  selector:
+    k8s-app: gce-metadata-exporter
+  type: NodePort
+  ports:
+  - name: http
+    port: 9101
+    targetPort: 9100
+    protocol: TCP
