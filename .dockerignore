@@ -1,2 +1,7 @@
 .git
 vendor
+*.tar.gz
+dist/
+build/
+*.md
+helm/

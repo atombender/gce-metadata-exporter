@@ -12,15 +12,11 @@ $ docker run atombender/gce-metadata-exporter:latest
 
 ## From source
 
-This requires [Glide](https://glide.sh/) and Go >= 1.7.
+This requires [dep](https://github.com/golang/dep), GNU Make and Go >= 1.7.
 
 ```shell
-$ mkdir -p $GOPATH/src/github.com/atombender
-$ cd $GOPATH/src/github.com/atombender
-$ git clone https://github.com/atombender/gce-metadata-exporter
-$ cd gce-metadata-exporter
-$ glide install --strip-vendor
-$ go build -o gce-metadata-exporter *.go
+$ dep ensure -vendor-only
+$ make build
 ```
 
 # Usage
