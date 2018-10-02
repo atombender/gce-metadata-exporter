@@ -18,15 +18,6 @@ $ helm install ./helm/gce-metadata-exporter
 $ docker run atombender/gce-metadata-exporter:0.3.0
 ```
 
-## From source
-
-This requires [dep](https://github.com/golang/dep), GNU Make and Go >= 1.7.
-
-```shell
-$ dep ensure -vendor-only
-$ make build
-```
-
 # Usage
 
 ```shell
