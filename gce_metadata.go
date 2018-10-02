@@ -88,7 +88,7 @@ func (c *GCEMetadataClient) doGET(endpointURL string, opts GetOptions) (*http.Re
 	}
 
 	q := u.Query()
-	q.Set("alt", "JSON")
+	q.Set("alt", "json")
 	if opts.WaitForChange {
 		q.Set("wait_for_change", "true")
 	}
