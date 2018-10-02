@@ -15,7 +15,7 @@ $ helm install ./helm/gce-metadata-exporter
 ## Docker
 
 ```
-$ docker run atombender/gce-metadata-exporter:0.2.0
+$ docker run atombender/gce-metadata-exporter:0.3.0
 ```
 
 ## From source
