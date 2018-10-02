@@ -1,0 +1,19 @@
+distro: trusty
+language: go
+go:
+- '1.11'
+env:
+- GO111MODULE=on
+script:
+- go get github.com/mitchellh/gox
+- go mod download
+- gox -osarch="darwin/amd64 linux/amd64 linux/arm windows/amd64" -output="gce-metadata-exporter-{{.OS}}-{{.Arch}}" ./...
+deploy:
+  provider: releases
+  api_key:
+    secure: FZA+tQ+nyIcUUHhu3TTRH48/01FqJmmSUIuGGtiH/AmZuKaH3h9tLNbog6kRTV1P4r0yG0PMYz6IMP+ei0oRFoP6W8gZBP5gNAEJM0FHDO24WWuTSsySCp1gsLDH8MMmQlxLwAmBgqzIxacNzPezBpDhnd50NW8I/ny6VK36r6zS3ftWy1a0tOOGFj5z5FPwJ/WAnZ9KCtw7pq3gFgfMDYdtYWUULoDeKvW6C9RSNuHt90TiYfUYpQbcuh/5dq3PF90oNojL2BR5bZviAwB2fk4stKPyB+bzYojj65vKBydnQdkX8ikhi68fOiTCzYSi9kMOadfJ13iS1bt+LVwj7I4v9cWN1hh2hIXTY8Bs702IrnA/9qnXrU69JuUDJYQ8suiQ5SaegcKDyvCPggKchnlF4KVY44XlLEZDrUPP0GYsPxCPn1v4jZBJICKH5LBn7YbWZTjI64JIu7NLi21h2eXvlKrkYGuqYUyv+3LMADm5NaOR3hLd4d2+sd16raA0unjFTpFjauDwlqXWDZ5OZ6fPckv3wA2DVGeHhE7a+iIXVlOZjjKtYNnJ5uOHjr05QdZEfZmGafnJKX+Bj8o20OLbXcGZBljQOI+DyhfpTiZ4IQmBCcouhjij32UM5/nDs+R9+bhM6e24IycHMGPgxydiaYpxPoXSTidyYfd45BU=
+  file_glob: true
+  file: 'bin/*'
+  skip_cleanup: true
+  on:
+    tags: true
