@@ -7,7 +7,7 @@ env:
 script:
 - go get github.com/mitchellh/gox
 - go mod download
-- gox -osarch="darwin/amd64 linux/amd64 linux/arm windows/amd64" -output="gce-metadata-exporter-{{.OS}}-{{.Arch}}" ./...
+- gox -osarch="darwin/amd64 linux/amd64 linux/arm windows/amd64" -output="bin/gce-metadata-exporter-{{.OS}}-{{.Arch}}" ./...
 deploy:
   provider: releases
   api_key:
