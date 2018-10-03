@@ -1,13 +1,17 @@
 distro: trusty
 language: go
+
 go:
 - '1.11'
+
 env:
 - GO111MODULE=on
+
 script:
 - go get github.com/mitchellh/gox
 - go mod download
 - gox -osarch="darwin/amd64 linux/amd64 linux/arm windows/amd64" -output="bin/gce-metadata-exporter-{{.OS}}-{{.Arch}}" ./...
+
 deploy:
   provider: releases
   api_key:
@@ -17,3 +21,8 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
